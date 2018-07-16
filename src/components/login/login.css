@@ -1,0 +1,38 @@
+.loginMainContainer{
+  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100vh;
+  width: 102%;
+  background-color: #252525;
+}
+
+.marcontainer{
+  height: 250px;
+  width: 470px;
+  background: rgba(0, 0, 0, 0.3);
+color: white;
+
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+.form-container{
+  display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    width: 213px;
+    height: 190px;
+}
+.general-info{
+  position: absolute;
+  top:20px;
+}
+.error-alert{
+  position: absolute;
+  bottom:20px;
+}
+.login_sub{
+  margin-top: 10px;
+}

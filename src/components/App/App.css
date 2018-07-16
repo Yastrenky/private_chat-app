@@ -1,0 +1,125 @@
+.myApp {
+  text-align: center;
+}
+
+.myApp-logo {
+  animation: App-logo-spin infinite 20s linear;
+  height: 80px;
+}
+
+.myApp-header {
+  background-color: #222;
+  height: 150px;
+  padding: 20px;
+  color: white;
+}
+
+.myApp-title {
+  font-size: 1.my5em;
+}
+
+.myApp-intro {
+  font-size: large;
+}
+
+@keyframes App-logo-spin {
+  from { transform: rotate(0deg); }
+  to { transform: rotate(360deg); }
+}
+.mycardheader{
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  margin-left: 20px;
+  font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+  color: white;
+}
+.mymessages{
+  width: 98%;
+  height: 78%;
+  overflow-y: scroll;
+  overflow-x: hidden;
+  position: absolute;
+}
+
+.mycard-footer{
+  display: flex;
+  margin-right: 10px;
+  margin-left: 10px;
+  position: absolute;
+  bottom: 10px;
+  width: 98%;
+}
+.mymessage_input{
+  width: 100%;
+
+}
+.mytime-container{
+  font-size: 10px;
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+  margin-bottom: 10px;
+}
+.mycard-message{
+  padding: 5px 5px 10px 5px;
+  font-size: 12px;
+  border-radius: 2px;
+
+  width: 10% auto;
+  max-width: 98%;
+  height: 50px auto;
+  background-color: black;
+  color: white;
+  margin-right: 10px;
+  margin-left: 10px;
+  margin-top: 5px;
+  margin-bottom: 5px;
+}
+.mybtn{
+  margin-left: 10px;
+    width: 76px;
+}
+/* .mylogout-button{
+  position: fixed;
+  right: 20px;
+  top: 20px;
+}
+.myreset-button{
+  position: fixed;
+  right: 110px;
+  top: 20px;
+} */
+
+.control{
+      /* position: absolute; */
+      display: flex;
+      justify-content: space-around;
+      padding: 10px;
+      width: 188px;
+      /* top: 10px; */
+      /* right: 20px; */
+}
+::-webkit-scrollbar {
+  width: 4px;
+  padding-top: 40px;
+}
+
+::-webkit-scrollbar-track {
+  -webkit-box-shadow: inset 0 0 1px rgba(0, 0, 0, 0.my3);
+  border: 1px solid black;
+  background: black;
+  border-radius: 10px;
+}
+
+::-webkit-scrollbar-thumb {
+  border-radius: 10px;
+  height: 10px;
+  width: 4px;
+  border: 1px solid black;
+  background:black;
+  -webkit-box-shadow: 0 1px 1px rgb(0, 0, 0);
+  background: -webkit-linear-gradient(rgb(200, 200, 200), rgb(150, 150, 150));
+}
+
+::-webkit-scrollbar-track-piece {
+  height: 10px;
+}
