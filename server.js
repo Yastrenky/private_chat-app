@@ -2,12 +2,16 @@ var express = require('express');
 var path = require('path');
 var compression = require('compression');
 
+
 var app = express();
 
 app.use(compression());
 
 // serve our static stuff like index.css
+
 app.use(express.static(path.join(__dirname, 'build')));
+
+
 
 // send all requests to index.html so browserHistory works
 app.get('*', function (req, res) {

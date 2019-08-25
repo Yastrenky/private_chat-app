@@ -4,6 +4,14 @@ import Message from './Messages';
 import ScrollView, { ScrollElement } from "./scroller";
 import '../App/App.css';
 
+const Emojis = (props) => {
+  return (
+    <div>
+      {props.emojis.map((emoji, index) => <span style={{ cursor: 'pointer' }} key={index} onClick={() => props.addEmoji(index)}>{emoji}</span>)}
+    </div>
+  )
+}
+
 class Chat extends React.Component {
   constructor(props) {
     super(props)
@@ -13,7 +21,10 @@ class Chat extends React.Component {
       userType: props.state.userType,
       message: '',
       messages: [],
-      onlineUsers:[]
+      onlineUsers: [],
+      //   emojis: ['💘', '✌', '😘', '😚', '😅', '😁', '😭'],
+      emojis: ["✌", "😂", "😝", "😁", "😱", "👉", "🙌", "🍻", "🔥", "🌈", "☀", "🎈", "🌹", "💄", "🎀", "⚽", "🎾", "🏁", "😡", "👿", "🐻", "🐶", "🐬", "🐟", "🍀", "👀", "🚗", "🍎", "💝", "💙", "👌", "❤", "😍", "😉", "😓", "😳", "💪", "💩", "🍸", "🔑", "💖", "🌟", "🎉", "🌺", "🎶", "👠", "🏈", "⚾", "🏆", "👽", "💀", "🐵", "🐮", "🐩", "🐎", "💣", "👃", "👂", "🍓", "💘", "💜", "👊", "💋", "😘", "😜", "😵", "🙏", "👋", "🚽", "💃", "💎", "🚀", "🌙", "🎁", "⛄", "🌊", "⛵", "🏀", "🎱", "💰", "👶", "👸", "🐰", "🐷", "🐍", "🐫", "🔫", "👄", "🚲", "🍉", "💛", "💚"]
+
     }
 
     this.ResetChat = this.ResetChat.bind(this);
@@ -29,7 +40,7 @@ class Chat extends React.Component {
 
     });
 
-    const loadUsersOnLine = data =>{
+    const loadUsersOnLine = data => {
       this.setState({ onlineUsers: data });
     }
 
@@ -39,17 +50,21 @@ class Chat extends React.Component {
     }
   }
 
+  addEmoji = (index) => {
+    this.setState({ message: `${this.state.message} ${this.state.emojis[index]} ` })
+  }
+
   sendMessage(ev) {
     ev.preventDefault();
-    if(this.state.message.length){
-    this.props.state.socket.emit('chat message', {
-      time: new Date(),
-      author: this.state.userName,
-      message: this.state.message,
-      message_type: this.state.userName
-    })
-    this.setState({ message: '' });
-  }
+    if (this.state.message.length) {
+      this.props.state.socket.emit('chat message', {
+        time: new Date(),
+        author: this.state.userName,
+        message: this.state.message,
+        message_type: this.state.userName
+      })
+      this.setState({ message: '' });
+    }
   }
   ResetChat() {
     this.props.state.socket.emit('chat message', {
@@ -118,20 +133,23 @@ class Chat extends React.Component {
 
               </div>
               <div className="mycard-footer">
-                <input
-                  type="text"
-                  placeholder="Message"
-                  className="mymessage_input"
-                  value={this.state.message}
-                  onKeyPress={(ev) => ev.key === 'Enter' ? this.sendMessage(ev) : null}
-                  onChange={ev => this.setState({ message: ev.target.value })}
-                  required
+                <div style={{ width: '96%' }}>
+                  <Emojis emojis={this.state.emojis} addEmoji={this.addEmoji} />
+                  <input
+                    type="text"
+                    placeholder="Message"
+                    className="mymessage_input"
+                    value={this.state.message}
+                    onKeyPress={(ev) => ev.key === 'Enter' ? this.sendMessage(ev) : null}
+                    onChange={ev => this.setState({ message: ev.target.value })}
+                    required
                   />
+                </div>
 
                 <br />
-
-
+                <div className = "button-container">
                 <button onClick={this.sendMessage} className="mybtn btn-primary form-control">Send</button>
+                </div>
               </div>
             </div>
           </div>

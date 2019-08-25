@@ -13,8 +13,8 @@ class Login extends React.Component {
     super(props);
 
     this.state = {
-      name: "",
-      pass: "",
+      name: "Yastrenky",
+      pass: "zxcvbnm99",
       errorLog: false,
       errorText:""
     }

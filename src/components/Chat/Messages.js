@@ -2,36 +2,52 @@ import format from '../../methods/format';
 import React from "react";
 
 
-class Mesages extends React.Component{
+class Mesages extends React.Component {
 
+  render() {
+    let styleColor = {
+      backgroundColor: 'blue',
+      width: '10px',
+      height: '10px',
+      borderRadius: '50%',
+      borderColor: 'white'
+    };
 
+    let containerDirect = {}
 
-render(){
-let styleColor ={};
-  switch(this.props.message.message_type){
-    case "reset" :
-    styleColor = {color:'red'}
-    break;
-    case "Yastrenky" :
-    styleColor = {color:'blue'}
-    break;
+    if (this.props.message.author.includes(this.props.state.userName)) {
+      containerDirect.flexDirection = 'row-reverse'
+    }
 
-    case "Ivelin" :
-    styleColor = {color:'pink'}
-    break;
+    switch (this.props.message.message_type) {
+      case "reset":
+        styleColor.backgroundColor = 'red'
+        break;
+      case "Yastrenky":
+        styleColor.backgroundColor = 'blue'
+        break;
 
-    default:
-    styleColor = {color:'white'}
+      case "Ivelin":
+        styleColor.backgroundColor = 'pink'
+        break;
+
+      default:
+        styleColor.backgroundColor = 'white'
+    }
+
+    return (
+      <div className="message-container" style={containerDirect}>
+        <div className="mycard-message" key={this.props.state.messages.indexOf(this.props.message)}>
+          <div className="mytime-container" >
+            <span><div style={styleColor}></div></span>
+            <span>{this.props.message.author} at {format.date(new Date(this.props.message.time)).time}</span>
+          </div>
+          <div className="mytext-container">{this.props.message.message}</div>
+        </div>
+      </div>
+    )
   }
-
-  return (
-  <div className="mycard-message" key={this.props.state.messages.indexOf(this.props.message)}>
-  <div className="mytime-container" >{this.props.message.author} at {format.date(new Date(this.props.message.time)).time}</div>
-  <div className="mytext-container" style={styleColor}>{this.props.message.message}</div>
-</div>
-  )
-}
 }
 
 
-export default  Mesages;
+export default Mesages;
