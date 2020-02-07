@@ -68,7 +68,11 @@
   }
 
   .mycard-footer {
-    width: 77%;
+    width: 95%;
+  }
+
+  .emoji-container {
+    width: 125%;
   }
 
   .mymessages {

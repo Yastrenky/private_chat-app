@@ -6,7 +6,7 @@ import '../App/App.css';
 
 const Emojis = (props) => {
   return (
-    <div>
+    <div className="emoji-container">
       {props.emojis.map((emoji, index) => <span style={{ cursor: 'pointer' }} key={index} onClick={() => props.addEmoji(index)}>{emoji}</span>)}
     </div>
   )
